@@ -1,0 +1,131 @@
+http://pklab.net/index.php?lang=EN&id=392
+https://goosting.com/qtccrpbb
+
+https://raspberrypi.vn/lap-trinh-raspberry-pi/cai-dat-qt-cho-raspberry-pi-chay-raspbian-3003.pi
+
+https://www.pyimagesearch.com/2017/09/04/raspbian-stretch-install-opencv-3-python-on-your-raspberry-pi/
+https://stackoverflow.com/questions/48722813/error-in-installing-opencv-3-3-0-on-raspberry-pi-3
+https://github.com/Tes3awy/OpenCV-3.2.0-Compiling-on-Raspberry-Pi/issues/5
+
+OpenCV C++ with Geany
+https://docs.opencv.org/trunk/db/df5/tutorial_linux_gcc_cmake.html
+https://www.youtube.com/watch?v=LglRKc2nGeY
+
+Note
+We assume that you have successfully installed OpenCV in your workstation.
+The easiest way of using OpenCV in your code is to use CMake. A few advantages (taken from the Wiki):
+No need to change anything when porting between Linux and Windows
+Can easily be combined with other tools by CMake( i.e. Qt, ITK and VTK )
+If you are not familiar with CMake, checkout the tutorial on its website.
+
+
+Now you have to create your CMakeLists.txt file. It should look like this:
+
+cmake_minimum_required(VERSION 2.8)
+project( DisplayImage )
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( DisplayImage DisplayImage.cpp )
+target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+
+cd <DisplayImage_directory>
+cmake .
+make
+
+./DisplayImage lena.jpg
+
+
+/////////////////////////Set static IP on Eth0://///////////////////////////////////////
+access to: sudo nano /etc/dhcpcd.conf
+interface eth0
+static ip_address=192.168.1.100/24
+#static routers=192.168.1.1
+#static domain_name_servers=8.8.8.8 8.8.4.4
+
+/////////////////////////////////////////////////////install fswebcam
+https://www.raspberrypi.org/documentation/usage/webcams/
+First, install the fswebcam package:
+
+sudo apt-get install fswebcam
+
+Enter the command fswebcam followed by a filename and a picture will be taken using the webcam, and saved to the filename specified:
+
+fswebcam image.jpg
+
+Specify resolution
+fswebcam -r 1280x720 image2.jpg
+Specify no banner
+fswebcam -r 1280x720 --no-banner image3.jpg
+
+
+///////////////////////////Hottttttttttt: using Qt c++ only for Image processing
+
+https://www.instructables.com/id/Thermal-Imaging-Camera/
+https://www.youtube.com/watch?v=l4jXR7OZIUM
+https://www.youtube.com/watch?v=0VYXZyL9MSc
+
+https://www.appropedia.org/How_to_install_FLIR_Lepton_Thermal_Camera_and_applications_on_Raspberry_Pi#FLIR_Lepton_thermal_camera_software
+https://groupgets.com/manufacturers/flir/products/lepton-2-0
+
+http://exploringrpi.com/chapter6/
+
+https://www.cppdeveloper.com/c-nang-cao/bi-kip-toi-uu-hoa-code-c-c/
+
+
+///////////////////////////Qt + Opencv3.2.0:     /usr/local on raspberry
+
+https://stackoverflow.com/questions/33276917/cross-compiling-to-raspberry-pi-using-qt-and-opencv
+https://www.youtube.com/watch?v=f-83nAdmFAA
+
+
+how to add library (in our case , opencv and raspicam) to qt project in raspberry pi:
+
+links:
+
+unix:!macx: LIBS += -L$$PWD/../../../../../usr/local/lib/ -lopencv_videoio -lopencv_core -lopencv_imgcodecs -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_imgproc -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_superres -lopencv_video -lopencv_videostab -lopencv_videoio -lraspicam -lraspicam_cv
+INCLUDEPATH += $$PWD/../../../../../usr/local/include
+DEPENDPATH += $$PWD/../../../../../usr/local/include
+
+code :
+
+#include _QCoreApplication_
+#include _opencv2/opencv.hpp_
+#include _opencv2/videoio.hpp_
+#include _opencv2/imgproc.hpp_
+#include _raspicam/raspicam_cv.h_
+
+using namespace std;
+using namespace cv;
+using namespace raspicam;
+
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+
+    RaspiCam_Cv cam;
+    Mat frame;
+
+    cam.set(CAP_PROP_FRAME_WIDTH,640);
+    cam.set(CAP_PROP_FRAME_HEIGHT,480);
+    cam.set(CAP_PROP_FORMAT,CV_8UC1);
+    cam.set(CAP_PROP_FPS,25);
+    if(!cam.open()){
+        cout__"error with open camera";
+        return 0;
+    }
+
+    while(1){
+        cam.grab();
+        cam.retrieve(frame);
+        imshow("frame",frame);
+        waitKey(10);
+    }
+
+
+
+
+    return a.exec();
+}
+
+///////////////////////////////////////////////////////////////////////////////////

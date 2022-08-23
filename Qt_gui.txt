@@ -1,0 +1,145 @@
+https://wiki.qt.io/Qt_for_Beginners
+https://quynhlaptrinhc.wordpress.com/2016/12/16/bai-1-co-ban-ve-qt/
+https://www.stdio.vn/articles/tao-gui-trong-c-su-dung-qt-418
+
+https://wiki.qt.io/How_to_setup_Qt_and_openCV_on_Windows
+https://www.youtube.com/watch?v=ox6NFWE8xg4
+https://www.youtube.com/watch?v=ZOSu-2Oju-A
+http://embeddedlaboratory.blogspot.com/2017/03/how-to-use-opencv-with-qt-mingw-on.html
+
+
+///At home
+INCLUDEPATH += C:\opencv2.4.11-build\include
+
+LIBS += C:\opencv2.4.11-build\bin\libopencv_core2411.dll
+LIBS += C:\opencv2.4.11-build\bin\libopencv_highgui2411.dll
+LIBS += C:\opencv2.4.11-build\bin\libopencv_imgcodecs2411.dll
+LIBS += C:\opencv2.4.11-build\bin\libopencv_imgproc2411.dll
+LIBS += C:\opencv2.4.11-build\bin\libopencv_calib3d2411.dll
+
+
+
+https://www.bogotobogo.com/Qt/Qt5_QGraphicsView_QGraphicsScene.php
+http://creative-punch.net/2014/02/opening-displaying-saving-images-qt/
+
+////////////bsuir: Qt 5.7.1 + openCV 2.4.11 + cmake-3.8.0
+
+INCLUDEPATH += C:\opencv2.4.11\release\include
+
+LIBS += C:\opencv2.4.11\release\bin\libopencv_core2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_highgui2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_imgcodecs2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_imgproc2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_calib3d2411.dll
+
+LIBS += C:\opencv2.4.11\release\bin\libopencv_core2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_highgui2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_imgcodecs2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_imgproc2411.dll
+LIBS += C:\opencv2.4.11\release\bin\libopencv_calib3d2411.dll
+https://subscription.packtpub.com/book/application_development/9781849513241/1/ch01lvl1sec12/creating-a-gui-application-using-qt
+https://www.youtube.com/watch?v=5sOiGJRyoBI
+https://www.youtube.com/watch?v=vKIEzqmeajQ
+https://www.google.com/search?q=use+opencv+in+qt+qui&oq=use+opencv+in+qt+qui&aqs=chrome..69i57.11447j0j7&sourceid=chrome&ie=UTF-8
+#include <QCoreApplication>
+#include <iostream>
+
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+
+using namespace std;
+using namespace  cv;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+INCLUDEPATH += C:\\opencv2.4.11\\build\\include
+LIBS += -LC:\\opencv2.4.11\\release\\lib\
+        -lopencv_core2411        \
+        -lopencv_highgui2411     \
+        -lopencv_imgproc2411     \
+        -lopencv_features2d2411  \
+        -lopencv_calib3d2411 \
+        -lopencv_contrib2411 \
+        -lopencv_ml2411 \
+        -lopencv_video2411 \
+        -lopencv_objdetect2411 \
+        -lopencv_ts2411
+#-lopencv_imgcodecs2411   \
+https://www.youtube.com/watch?v=0ONxIy8itRA
+
+
+///////////////////Qt5.4 + openCV2.4.9 without CMAKE//////////////busir:
+INCLUDEPATH += F:\\OpenCV-2.4.9-qt\\include
+LIBS += -LF:\\OpenCV-2.4.9-qt\\build-qt\\lib \
+    -lopencv_calib3d249d \
+    -lopencv_contrib249d \
+    -lopencv_core249d \
+    -lopencv_features2d249d \
+    -lopencv_flann249d \
+    -lopencv_gpu249d \
+    -lopencv_highgui249d \
+    -lopencv_imgproc249d \
+    -lopencv_legacy249d \
+    -lopencv_ml249d \
+    -lopencv_nonfree249d \
+    -lopencv_objdetect249d \
+    -lopencv_ocl249d \
+    -lopencv_photo249d \
+    -lopencv_stitching249d \
+    -lopencv_superres249d \
+    -lopencv_ts249d \
+    -lopencv_video249d \
+    -lopencv_videostab249d
+////at home
+INCLUDEPATH += D:\\OpenCV-2.4.9\\include
+LIBS += -LD:\\OpenCV-2.4.9\\build-qt\\lib \
+    -lopencv_calib3d249d \
+    -lopencv_contrib249d \
+    -lopencv_core249d \
+    -lopencv_features2d249d \
+    -lopencv_flann249d \
+    -lopencv_gpu249d \
+    -lopencv_highgui249d \
+    -lopencv_imgproc249d \
+    -lopencv_legacy249d \
+    -lopencv_ml249d \
+    -lopencv_nonfree249d \
+    -lopencv_objdetect249d \
+    -lopencv_ocl249d \
+    -lopencv_photo249d \
+    -lopencv_stitching249d \
+    -lopencv_superres249d \
+    -lopencv_ts249d \
+    -lopencv_video249d \
+    -lopencv_videostab249d
+==========
+INCLUDEPATH += c:\\OpenCV2.4.11\\build\\include
+LIBS += -Lc:\\OpenCV2.4.11\\release\\lib \
+    -lopencv_calib3d2411 \
+    -lopencv_contrib2411 \
+    -lopencv_core2411 \
+    -lopencv_features2d2411 \
+    -lopencv_flann2411 \
+    -lopencv_gpu2411 \
+    -lopencv_highgui2411 \
+    -lopencv_imgproc2411 \
+    -lopencv_legacy2411 \
+    -lopencv_ml2411 \
+    -lopencv_nonfree2411 \
+    -lopencv_objdetect2411 \
+    -lopencv_ocl2411 \
+    -lopencv_photo2411 \
+    -lopencv_stitching2411 \
+    -lopencv_superres2411 \
+    -lopencv_ts2411 \
+    -lopencv_video2411 \
+    -lopencv_videostab2411
+
+
+///Path BSUIR
+C:\Program Files (x86)\Cuminas\Document Express DjVu Plug-in\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\MATLAB Production Server\R2015a\runtime\win64;C:\Program Files\MATLAB\MATLAB Production Server\R2015a\bin;C:\Program Files\MATLAB\MATLAB Production Server\R2015a\polyspace\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Shoes;C:\opencv2.4.11\build\x64\vc11\bin;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\CMake\bin;C:\Qt\Qt5.7.1\5.7\mingw53_32\bin;C:\Qt\Qt5.7.1\Tools\mingw530_32\bin;C:\opencv2.4.11\release\bin;C:\Qt\Qt5.7.1\Tools\QtCreator\bin;C:\opencv2.4.11\release\install\x64\mingw\bin;f:\OpenCV-2.4.9-qt\build-qt\bin\
+
+
+//
+
+C:\Program Files (x86)\Cuminas\Document Express DjVu Plug-in\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\MATLAB Production Server\R2015a\runtime\win64;C:\Program Files\MATLAB\MATLAB Production Server\R2015a\bin;C:\Program Files\MATLAB\MATLAB Production Server\R2015a\polyspace\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Shoes;C:\opencv2.4.11\build\x64\vc11\bin;C:\Program Files (x86)\Common Files\Ulead Systems\MPEG;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\CMake\bin;f:\OpenCV-2.4.9-qt\build-qt\bin\

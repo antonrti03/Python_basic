@@ -1,0 +1,43 @@
+# chi lay dc tung phan tu 1 theo thu tu tu 0
+# dung next()
+itor = (x for x in range(3))
+print(itor)
+print(type(itor))
+idx = next(itor)
+print(idx)
+idx = next(itor)
+print(idx)
+idx = next(itor)
+print(idx)
+
+lst = [6, 3, 7, 'kteam', 3.9, [0, 2, 3]]
+iter_list = iter(lst) 
+print(iter_list)
+idx = next(iter_list)
+print(idx)
+idx = next(iter_list)
+print(idx)
+
+#Ham sum(iterable, start=0)
+su = sum([1, 2, 3])
+print(su)
+su = sum([1, 2, 3], 10)
+print(su)
+
+#Ham max(iterable, *[, default=obj, key=func])
+su = sum([1, 2, 3])
+print(su)
+su = sum([1, 2, 3], 10)
+ma = max([1, 2, 3], default='default value')
+print(su)
+print(ma)
+
+#Ham max(arg1, arg2, *args, *[, key=func])
+ma = max([1, 2, 3])
+print(ma)
+
+#Ham sorted(iterable, /, *, key=None, reverse=False)
+ma = sorted([1, 2, 6, 3])
+print(ma)
+ma = sorted([1, 2, 6, 3], reverse=True)
+print(ma)

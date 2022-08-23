@@ -1,0 +1,2554 @@
+//https://www.dll-files.com/download/1524579b894c9b99f42a695b86881254/apphelp.dll.html?c=UnJESXdWbWpHM2ZxckhQQlRZbitPZz09
+//http://minhhn.com/tong-hop/cac-phim-tat-thong-dung-trong-visual-studio/
+//https://cpp.daynhauhoc.com
+#include <opencv2/core/core.hpp>
+#include <cv.h>
+#include <stdlib.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <iostream>
+#include <stdio.h>
+#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+// Ctrl+K+C: Code > comment
+// Ctrl+K+U: comment > code
+// F9: Dat break point; Ctrl+Shift+F9: xoa toan bo break point da dat
+// F10: Debug vao chi tiet cua file; 
+// F5: chay chuong trinh
+// Ctrl+F5: Chay chuong trinh
+// F12: Xem dinh nghia cua 1 ham
+// Ctrl + Alt + F7: Rebuild
+using namespace cv; // for using opencv2.x
+using namespace std; // for texting with cout<<
+
+
+//=============================> Convert BGR Image to GRAY, HSV, YCrCb=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{   
+//
+//	cout<<"Beginning...."<<endl;
+//    Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	imshow("Original", src);
+//	Mat gray, hsv, ycrcb;
+//	cvtColor(src, gray, CV_BGR2GRAY);
+//	cvtColor(src, hsv, CV_BGR2HSV);
+//	cvtColor(src,ycrcb, CV_BGR2YCrCb);
+//	imshow("gray", gray);
+//	imshow("hsv", hsv);
+//	imshow("ycrcb", ycrcb);
+//    waitKey(0);
+//    return 0;
+//}
+
+
+//=============================> Brightness and Contrast Change=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	imshow("Original", src);
+//	Mat dst = src.clone();
+//	double alpha = 1.2; // Contrast
+//	int beta = 200;  // brightness
+//	for (int i=0; i<src.rows; i++)
+//		for(int j=0; j<src.cols; j ++)
+//			for(int k=0; k<3; k++)
+//				dst.at<Vec3b>(i,j)[k] = saturate_cast<uchar>(alpha*dst.at<Vec3b>(i,j)[k] + beta);
+//	imshow("Processed Image", dst);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+// ==============================>Adaptive Threshold=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	cout<<"Adaptive threshold"<<endl;
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", CV_LOAD_IMAGE_GRAYSCALE);
+//	imshow("Original", src);
+//	Mat dst;
+//	adaptiveThreshold(src, dst, 255, CV_ADAPTIVE_THRESH_MEAN_C, CV_THRESH_BINARY, 35, 10);// 35- window size; 5 - tham so bu tru
+//	imshow("Binary image with adaptive threshold", dst);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+// ==============================>Histogram equalization (can bang histogram) for GRAY=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	cout<<"Histogram equalization"<<endl;
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", CV_LOAD_IMAGE_GRAYSCALE);
+//	imshow("Original", src);
+//	Mat dst;
+//	equalizeHist(src, dst);
+//	imshow("Equalized Image", dst);
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//=================================> Histogram equalization for BGR=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	cout<<"Histogram equalization"<<endl;
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	imshow("Original", src);
+//	Mat hsv, dst;
+//	cvtColor(src, hsv,CV_BGR2HSV);
+//	vector<Mat> hsv_channels;
+//	// Tach hsv thanh 3 channels
+//	split(hsv, hsv_channels);
+//	// Equalization V channels
+//	equalizeHist(hsv_channels[2], hsv_channels[2]);
+//	// Merge channels
+//	merge(hsv_channels, hsv);
+//	// Convert HSV to RGB
+//	cvtColor(hsv, dst, CV_HSV2BGR);
+//	imshow("Equalization", dst);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//==================================> Histogram of RGB Image=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	cout<<"Histogram equalization"<<endl;
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	imshow("Original", src);
+//
+//	vector<Mat> img_rgb;
+//	Mat img_r, img_g, img_b;
+//
+//	int w = 400, h = 400;
+//	int size_hist = 255;
+//	float range[] = {0, 255};
+//	const float* hist_range = {range};
+//
+//	split(src, img_rgb); // tach rgb thanh 03 channel
+//	calcHist(&img_rgb[0], 1, 0, Mat(), img_b, 1, &size_hist, &hist_range, true, false); //Tinh Hist cua input va save to hist array
+//	calcHist(&img_rgb[1], 1, 0, Mat(), img_g, 1, &size_hist, &hist_range, true, false);
+//	calcHist(&img_rgb[2], 1, 0, Mat(), img_r, 1, &size_hist, &hist_range, true, false);
+//
+//	int bin = cvRound((double)w/size_hist);
+//
+//	Mat disp_r(w, h, CV_8UC3, Scalar(255, 255, 255));
+//	Mat disp_g = disp_r.clone();
+//	Mat disp_b = disp_r.clone();
+//
+//	normalize(img_b, img_b, 0, disp_b.rows, NORM_MINMAX, -1, Mat());
+//	normalize(img_g, img_g, 0, disp_g.rows, NORM_MINMAX, -1, Mat());
+//	normalize(img_r, img_r, 0, disp_r.rows, NORM_MINMAX, -1, Mat());
+//
+//	for(int i=1; i<255; i++)
+//	{
+//	line(disp_r, Point(bin*(i),h), Point(bin*(i), h - cvRound(img_r.at<float>(i))), Scalar(0,0,255), 2, 8, 0);
+//	line(disp_g, Point(bin*(i),h), Point(bin*(i), h - cvRound(img_g.at<float>(i))), Scalar(0,255,0), 2, 8, 0);
+//	line(disp_b, Point(bin*(i),h), Point(bin*(i), h - cvRound(img_b.at<float>(i))), Scalar(255,0,0), 2, 8, 0);
+//	}
+//
+//	imshow("Histogram of blue channel", disp_b);
+//	imshow("Histogram of green channel", disp_g);
+//	imshow("Histogram of red channel", disp_r);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//========================>HISTOGRAM ALL IN ONE=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	Mat src, dst;
+//  /// Load image
+//  src = imread( "E:/AntonRTI/OpenCVcode/lena.png", 1 );
+//  clock_t start, end;
+//  start=clock();
+//  if( !src.data )
+//    { return -1; }
+//
+//  /// Separate the image in 3 places ( B, G and R ) by alphabet index
+//  vector<Mat> bgr_planes;
+//  split( src, bgr_planes );
+//
+//  /// Establish the number of bins
+//  int histSize = 256;
+//
+//  /// Set the ranges ( for B,G,R) )
+//  float range[] = { 0, 256 } ;
+//  const float* histRange = { range };
+//
+//  bool uniform = true; bool accumulate = false;
+//
+//  Mat b_hist, g_hist, r_hist;
+//
+//  /// Compute the histograms:
+//  calcHist( &bgr_planes[0], 1, 0, Mat(), b_hist, 1, &histSize, &histRange, uniform, accumulate );
+//  calcHist( &bgr_planes[1], 1, 0, Mat(), g_hist, 1, &histSize, &histRange, uniform, accumulate );
+//  calcHist( &bgr_planes[2], 1, 0, Mat(), r_hist, 1, &histSize, &histRange, uniform, accumulate );
+//
+//  // Draw the histograms for B, G and R
+//  int hist_w = 512; int hist_h = 400;
+//  int bin_w = cvRound( (double) hist_w/histSize );
+//
+//  Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,0,0) );
+//
+//  /// Normalize the result to [ 0, histImage.rows ]
+//  normalize(b_hist, b_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
+//  normalize(g_hist, g_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
+//  normalize(r_hist, r_hist, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
+//
+//  /// Draw for each channel
+//  for( int i = 1; i < histSize; i++ )
+//  {
+//      line( histImage, Point( bin_w*(i-1), hist_h - cvRound(b_hist.at<float>(i-1)) ) ,
+//                       Point( bin_w*(i), hist_h - cvRound(b_hist.at<float>(i)) ),
+//                       Scalar( 255, 0, 0), 2, 8, 0  );
+//      line( histImage, Point( bin_w*(i-1), hist_h - cvRound(g_hist.at<float>(i-1)) ) ,
+//                       Point( bin_w*(i), hist_h - cvRound(g_hist.at<float>(i)) ),
+//                       Scalar( 0, 255, 0), 2, 8, 0  );
+//      line( histImage, Point( bin_w*(i-1), hist_h - cvRound(r_hist.at<float>(i-1)) ) ,
+//                       Point( bin_w*(i), hist_h - cvRound(r_hist.at<float>(i)) ),
+//                       Scalar( 0, 0, 255), 2, 8, 0  );
+//  }
+//  end=clock();
+//  double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//  printf("Execution time: %.3fs\n", duration_sec);
+//  ///C++
+//  double b=8, c=9;
+//  double a = b+c;
+//  printf("Total: %.3fs\n", a);
+//  /// Display
+//  namedWindow("calcHist Demo", CV_WINDOW_AUTOSIZE );
+//  imshow("calcHist Demo", histImage );
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+// ================================>Histogram equalization for GRAYSCALE IMAGE=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//  //Declare the source and destination images as well as the windows names:
+//  Mat src, dst;
+//  char* source_window = "Source image";
+//  char* equalized_window = "Equalized Image";
+//  // Load image
+//  src = imread ("E:/AntonRTI/OpenCVcode/lena.png", 1 );
+//  clock_t start, end;
+//  start = clock();
+//  if (!src.data )
+//    { 
+//     cout<<"No image Found "<<endl;
+//     return -1;
+//    }
+//  // Convert to grayscale (GR = 0.21 * Red + 0.72 * Green + 0.07 * Blue) or to HSV, YCbCr...
+//  cvtColor (src, src, CV_BGR2GRAY);
+//  // Apply Histogram Equalization
+//  equalizeHist(src, dst);
+//  // Display results
+//  namedWindow(source_window, CV_WINDOW_AUTOSIZE );
+//  namedWindow(equalized_window, CV_WINDOW_AUTOSIZE );
+//  imshow(source_window, src);
+//  imshow(equalized_window, dst);
+//  // Display running time
+//  end=clock();
+//  double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//  printf("Execution time: %.3fs\n", duration_sec);
+//  ///C++
+//  double b=8, c=9;
+//  double a = b+c;
+//  printf("Total: %.3fs\n", a);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//=====================> HISTOGRAM OF IMAGE GRAYSCALE=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	Mat image = imread("E:/AntonRTI/OpenCVcode/lena.png", CV_LOAD_IMAGE_GRAYSCALE);
+//    // Allcoate memory for no of pixels for each intensity value
+//    int histogram[256];
+//
+//    // Initialize all intensity values to 0
+//    for(int i = 0; i < 255; i++)
+//    {
+//        histogram[i] = 0;
+//    }
+//
+//    // Calculate the number of pixels for each intensity values
+//    for(int y = 0; y < image.rows; y++)  //image.rows = row size, image.cols = column size
+//        for(int x = 0; x < image.cols; x++)
+//            histogram[(int)image.at<uchar>(y,x)]++;
+//    for(int i = 0; i < 256; i++)
+//        cout<<histogram[i]<<" ";  //Display number of pixels for each intensity values
+//
+//    // Draw the histograms
+//    int hist_w = 512; int hist_h = 400;
+//    int bin_w = cvRound((double) hist_w/256);
+//    Mat histImage(hist_h, hist_w, CV_8UC1, Scalar(255, 255, 255));
+//
+//    // Find the maximum intensity element from histogram
+//    int max = histogram[0];
+//    for(int i = 1; i < 256; i++){
+//        if(max < histogram[i]){
+//            max = histogram[i];
+//        }
+//    }
+//
+//    // Normalize the histogram between 0 and histImage.rows
+//    for(int i = 0; i < 255; i++){
+//        histogram[i] = ((double)histogram[i]/max)*histImage.rows;
+//    }
+//
+//    // Draw the intensity line for histogram
+//    for(int i = 0; i < 255; i++)
+//    {
+//        line(histImage, Point(bin_w*(i), hist_h),
+//                              Point(bin_w*(i), hist_h - histogram[i]), 
+//												Scalar(0,0,0), 1, 8, 0);
+//    }
+//
+//    // Display histogram
+//    namedWindow("Intensity Histogram", CV_WINDOW_AUTOSIZE);
+//    imshow("Intensity Histogram", histImage);
+//
+//    namedWindow("Grayscale Image", CV_WINDOW_AUTOSIZE);
+//    imshow("Grayscale Image", image);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//====================================>PHONG TO, THU NHO, XOAY IMAGE=========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	cout<<"Image resize and rotation!"<<endl;
+//
+//	clock_t start, end;
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	imshow("Grayscale image", src);
+//
+//	start = clock();
+//	Mat dst = src.clone();
+//	Mat dst1 = src.clone();
+//
+//	double angle = 45.0;
+//	double scale = 0.5;
+//	Point2f center(src.cols/2, src.rows/2); //Get a center point for running
+//
+//	double I[2][3] = {1,0.5,0, 0,1,0};
+//	Mat mat_rot1(2,3,CV_64F, I);
+//	warpAffine(src, dst1, mat_rot1, src.size());  // TRUOT IMAGE
+//
+//	Mat mat_rot = getRotationMatrix2D(center, angle, scale);  // create a affine matrix 2x2
+//	warpAffine(src, dst, mat_rot, src.size()); // Resize and rotation
+//	end = clock();
+//
+//	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//	printf("Execution time: %.3fs\n", duration_sec);
+//
+//	imshow("Changed", dst);
+//	imshow("Anh truot", dst1);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+
+//====================================> IMAGE FILTERING==================================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	// Blur: M=(1/row.cols)*[1 1 ... 1; 1 ...; ...]; lam mo anh
+//	Mat src, blurimg, sobelimg, lap;
+//	src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	imshow("Original", src);
+//	//Blur
+//	blur(src, blurimg, Size(5,5), Point(-1,-1), 4);
+//	imshow("Blured", blurimg);
+//	// Sobel filter
+//	Sobel(src, sobelimg, CV_32F, 1, 1, 5, 1, 0, 4);
+//	imshow("Sobel filter", sobelimg);
+//	// Laplace filter: M=[0 1 0; 1 -4 1; 0 1 0]
+//	Laplacian(src, lap, CV_32F, 1, 1, 0, 4);
+//	imshow("Laplace", lap);
+//	// medianBlur, gaussianBlur, pyrDown, pyrUp
+//	// Tu xay dung filter
+//	Mat dst;
+//	double m[3][3] = {-1/9, -1/9, 0, -1/9, 0, 1/9, 0, 1/9, 1/9};
+//	//Mat M=cv::Mat(3, 3, CV_64F, m, Point(-1,-1), 128.0);
+//	filter2D(src, dst, src.depth(), 5, Point(-1,-1), 0, 4);
+//	imshow("filter2D", dst);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+
+//=============> CANNY DETECTOR===============================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	//Canny: tim toi uu edge chinh xac and manh = Gauss + gradient + delete Non-maxima with threshold (upper and lower)
+//	Mat gray, dst1, dst2;
+//	gray = imread("E:/AntonRTI/OpenCVcode/lena.png", CV_LOAD_IMAGE_GRAYSCALE);
+//	GaussianBlur(gray, gray, Size(9,9), 2);
+//	imshow("Grayscale", gray);
+//	double t1=30, t2=200;
+//	Canny(gray, dst1, t1, t2, 3, false);
+//	t1=50; t2=100; //Bien anh if > upper and 
+//	Canny(gray, dst2, t1, t2, 3, false);
+//	imshow("Threshold 1", dst1);
+//	imshow("Threshold 2", dst2);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//=============> LINE AND CIRCLE DETECTION BY HOUGH TRANSFORM=============================================================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	Mat src = imread("E:/AntonRTI/OpenCVcode/lena.png", 1);
+//	Mat gray;
+//	cvtColor(src, gray, CV_RGB2GRAY);
+//	GaussianBlur(gray, gray, Size(9,9), 2, 2);
+//
+//	// Line detection
+//	Mat canny;
+//	Canny(gray, canny, 10, 70, 3, false); //Convert to binary image
+//	imshow("Canny", canny);
+//	vector<Vec4i> lines;
+//	HoughLinesP(canny, lines, 1, CV_PI/180, 10, 70, 10);
+//
+//	// Circle detection
+//	vector<Vec3f> circles;
+//	//HoughCircles(gray, circles, CV_HOUGH_GRADIENT, 1, 100, 200, 0, 0);
+//
+//	// Ve line and circles len Image
+//	for (int i=0; i<lines.size(); i++)
+//	{
+//		Vec4i l = lines[i];
+//		line(src, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 2);
+//	}
+//
+//	for (int i=0; i<circles.size(); i++)
+//	{
+//		Point center(cvRound(circles[i][0]), cvRound(circles[i][1])); // Tam
+//		int radius = cvRound(circles[i][2]); //Ban kinh
+//		circle(src, center, radius, Scalar(0,0,255), 2, 8, 0);
+//	}
+//	imshow("Result", src);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//==============================MORPHO: DILATION, EROSION, OPENING, CLOSING===========================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//	Mat src1 = imread("E:/AntonRTI/OpenCVcode/lena.png",1);
+//	Mat src2 = src1.clone();
+//	Mat gray, binary;
+//	cvtColor(src1, gray, CV_RGB2GRAY);
+//	threshold(gray, binary, 100, 255, CV_THRESH_BINARY);
+//	imshow("Binary", binary);
+//	Mat morpho;
+//	Mat element = getStructuringElement(MORPH_CROSS, Size(3,3), Point(1,1));
+//	erode(binary, morpho, element, Point(-1,-1), 3);
+//	imshow("morpho", morpho);
+//	vector<vector<Point>> contours1;
+//	findContours(binary, contours1, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+//
+//	//for(int i = 0; i < contours1.size(); i++)
+//	//cout<<contours1[i]<<" ";  //Display number of pixels for each intensity values
+//
+//	for(size_t i=0; i<contours1.size(); i++)
+//	{
+//		Rect r=boundingRect(contours1[i]);
+//		if(r.width/(double)r.height>3.5f && r.width/(double)r.height<4.5f)
+//			rectangle(src1, r, Scalar(0,0,255), 2, 8, 0);
+//		else
+//			rectangle(src1, r, Scalar(0,255,0), 1, 8, 0);
+//	}
+//	imshow("Before Erosion", src1);
+//
+//	vector<vector<Point>> contours2;
+//	findContours(morpho, contours2, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+//	for(size_t i=0; i<contours2.size(); i++)
+//	{
+//		Rect r=boundingRect(contours2[i]);
+//		if(r.width/(double)r.height>3.5f && r.width/(double)r.height<4.5f)
+//			rectangle(src2, r, Scalar(0,0,255), 2, 8, 0);
+//		else
+//			rectangle(src2, r, Scalar(0,255,0), 1, 8, 0);
+//	}
+//	imshow("After Erosion", src2);
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+//===================Video Capture From Camera=============================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main(int, char**)
+//{
+//    VideoCapture cap(0); // open the default camera
+//	//VideoCapture cap("C:\\nasa_shuttle_m420p.mov");
+//    if(!cap.isOpened())  // check if we succeeded
+//        return -1;
+//
+//    Mat edges;
+//    namedWindow("edges",1);
+//    for(;;)
+//    {
+//        Mat frame;
+//        cap >> frame; // get a new frame from camera
+//        cvtColor(frame, edges, CV_BGR2GRAY); //Convert to Grayscale
+//        GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5); //Gaussian
+//        Canny(edges, edges, 0, 20, 3); //Canny filter
+//        imshow("edges", edges);
+//        if(waitKey(30) >= 0) break;
+//    }
+//    // The camera will be deinitialized automatically in VideoCapture destructor
+//	destroyAllWindows();  //Giai phong
+//	waitKey(0);
+//    return 0;
+//}
+
+
+
+
+//===============================Video Open is from file==============================================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//IplImage* frame=0;
+//int main(int argc, char* argv[])
+//	{
+//		//Ten file duoc dua ra bang tham so dau tien
+//		char* filename = argc == 2? argv[1]: "C:\\nasa_shuttle_m420p.mov";
+//		printf("[i] file: %s\n", filename);
+//		//Window to see pictures
+//		cvNamedWindow("Demo Nasa video", CV_WINDOW_AUTOSIZE);
+//		//receive info about video file
+//		CvCapture* capture = cvCreateFileCapture(filename); //Nhan name file roi tra lai chi so len CvCapture
+//		while(1){
+//			//receive next kadr
+//			frame = cvQueryFrame(capture); //Nhan va tra ve frames tu camera or file
+//			if(!frame){
+//				break;
+//			}
+//
+//			/* Dua vao phan xu ly cua minh*/
+//
+//			//To see kadr
+//			cvShowImage("Demo Nasa video", frame);
+//			char c = cvWaitKey(33);
+//			if(c==27){
+//				break; //if ESC to out of programm
+//			}
+//	}
+//	
+//		//Giai phong tai nguyen
+//		cvReleaseCapture(&capture);
+//		//Delete the window
+//		cvDestroyWindow("Demo Nasa video");
+//		return 0;
+//}
+
+//====================Video Open from file or camera====================================
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main()
+//{
+//CvCapture *camera = cvCaptureFromFile("C:\\nasa_shuttle_m420p.mov");
+//if (camera==NULL)
+//    printf("camera is null\n");
+//else
+//    printf("camera is not null");
+//
+//cvNamedWindow("img");
+//while (cvWaitKey(10)!=atoi("q")){
+//    double t1=(double)cvGetTickCount();
+//    IplImage *img=cvQueryFrame(camera);
+//    /*if(img){
+//        cvSaveImage("C:/opencv.jpg",img);
+//    }*/
+//    double t2=(double)cvGetTickCount();
+//    printf("time: %gms  fps: %.2g\n",(t2-t1)/(cvGetTickFrequency()*1000.), 1000./((t2-t1)/(cvGetTickFrequency()*1000.)));
+//    cvShowImage("img",img);
+//}
+//cvReleaseCapture(&camera);
+//cvDestroyWindow("img");
+//return 0;
+//}
+
+
+//int main()
+//{
+//	
+//
+//	waitKey(0);
+//    return 0;
+//}
+
+//=====================MFC - Microsoft Fundation Classes====================================
+
+
+//====================================Video capture from File=========================================
+
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main(){
+// 
+//  // Create a VideoCapture object and open the input file
+//  // If the input is the web camera, pass 0 instead of the video file name
+//  VideoCapture cap("C:\\outcpp.avi"); 
+//    
+//  // Check if camera opened successfully
+//  if(!cap.isOpened()){
+//    cout << "Error opening video stream or file" << endl;
+//    return -1;
+//  }
+//     
+//  while(1){
+// 
+//    Mat frame;
+//    // Capture frame-by-frame
+//    cap >> frame;
+//  
+//    // If the frame is empty, break immediately
+//    if (frame.empty())
+//      break;
+// 
+//    // Display the resulting frame
+//    imshow( "Frame", frame );
+// 
+//    // Press  ESC on keyboard to exit
+//    char c=(char)waitKey(25);
+//    if(c==27)
+//      break;
+//  }
+//  
+//  // When everything done, release the video capture object
+//  cap.release();
+// 
+//  // Closes all the frames
+//  destroyAllWindows();
+//     
+//  return 0;
+//}
+
+//=========================Write Video From Camera==============================
+//https://www.learnopencv.com/read-write-and-display-a-video-using-opencv-cpp-python/
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+
+//int main(){
+// 
+//  // Create a VideoCapture object and use camera to capture the video
+//  VideoCapture cap(0); 
+// 
+//  // Check if camera opened successfully
+//  if(!cap.isOpened())
+//  {
+//    cout << "Error opening video stream" << endl; 
+//    return -1; 
+//  } 
+// 
+//  // Default resolution of the frame is obtained.The default resolution is system dependent. 
+//  int frame_width = cap.get(CV_CAP_PROP_FRAME_WIDTH); 
+//  int frame_height = cap.get(CV_CAP_PROP_FRAME_HEIGHT); 
+//   
+//  // Define the codec and create VideoWriter object.The output is stored in 'outcpp.avi' file. 
+//  VideoWriter video("outcpp.avi",CV_FOURCC('M','J','P','G'),10, Size(frame_width,frame_height)); 
+//  
+//  while(1)
+//  { 
+//    Mat frame; 
+//     
+//    // Capture frame-by-frame 
+//    cap >> frame;
+//  
+//    // If the frame is empty, break immediately
+//    if (frame.empty())
+//      break;
+//     
+//    // Write the frame into the file 'outcpp.avi'
+//    video.write(frame);
+//    
+//    // Display the resulting frame    
+//    imshow( "Frame", frame );
+//  
+//    // Press  ESC on keyboard to  exit
+//    char c = (char)waitKey(1);
+//    if( c == 27 ) 
+//      break;
+//  }
+// 
+//  // When everything done, release the video capture and write object
+//  cap.release();
+//  video.release();
+// 
+//  // Closes all the windows
+//  destroyAllWindows();
+//
+//  waitKey(0);
+//  return 0;
+//}
+
+//==============================C++=================================
+// Boolean: bool; char; int; float; double; void: kieu ko co gia tri; wchar_t: wide character.
+
+//int main()
+//{
+//   cout << "Kich co cua char la: " << sizeof(char) << endl;
+//   cout << "Kich co cua int la: " << sizeof(int) << endl;
+//   cout << "Kich co cua short int la: " << sizeof(short int) << endl;
+//   cout << "Kich co cua long int la: " << sizeof(long int) << endl;
+//   cout << "Kich co cua float la: " << sizeof(float) << endl;
+//   cout << "Kich co cua double la: " << sizeof(double) << endl;
+//   cout << "Kich co cua wchar_t la: " << sizeof(wchar_t) << endl;
+//   waitKey(0);
+//   return 0;
+//}
+
+// Ham main() la noi su thuc thi chuong trinh bat dau
+
+//int main()
+//{
+//   cout << "Hello World"; // In dong chu Hello World
+//   return 0;
+//}
+
+//=====STRING====
+//int main ()
+//{
+//   char loiChao[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+//
+//   cout << "Khi gap nhau, chung ta noi: ";
+//   cout << loiChao << endl;
+//
+//   return 0;
+//}
+
+//----------------------------------------
+
+//#include <cstring>
+//using namespace std;
+//
+//int main ()
+//{
+//   char chuoi1[10] = "Hello";
+//   char chuoi2[10] = "Christmas";
+//   char chuoi3[10];
+//   int  len;
+//
+//   // sao chep chuoi1 vao trong chuoi3
+//   strcpy( chuoi3, chuoi1);
+//   cout << "strcpy( chuoi3, chuoi1) : " << chuoi3 << endl;
+//
+//   // noi hai chuoi: chuoi1 va chuoi2
+//   strcat( chuoi1, chuoi2);
+//   cout << "strcat( chuoi1, chuoi2): " << chuoi1 << endl;
+//
+//   // tong do dai cua chuoi1 mot sau khi thuc hien noi chuoi
+//   len = strlen(chuoi1);
+//   cout << "Dung ham strlen(chuoi1) de tinh do dai chuoi1: " << len << endl;
+//
+//   return 0;
+//}
+
+//---------------------------------------
+
+//#include <iostream>
+//#include <string>
+//
+//using namespace std;
+//
+//int main ()
+//{
+//   string chuoi1 = "Hello";
+//   string chuoi2 = "Christmas";
+//   string chuoi3;
+//   int  len ;
+//
+//   // sao chep chuoi1 vao trong chuoi3
+//   chuoi3 = chuoi1;
+//   cout << "Bay gio chuoi3 la: " << chuoi3 << endl;
+//
+//   // noi hai chuoi: chuoi1 va chuoi2
+//   chuoi3 = chuoi1 + chuoi2;
+//   cout << "chuoi1 + chuoi2 co ket qua la: " << chuoi3 << endl;
+//
+//   // tong do dai cua chuoi3 mot sau khi thuc hien noi chuoi
+//   len = chuoi3.size();
+//   cout << "Tinh do dai voi ham chuoi3.size() :  " << len << endl;
+//
+//   return 0;
+//}
+
+//-----------------------------ARRAY-------------------------------------------------------------
+
+//#include <iostream>
+//using namespace std;
+// 
+//#include <iomanip>
+//using std::setw;
+// 
+//int main ()
+//{
+//   int n[ 10 ]; // n la mot mang gom 10 so nguyen
+// 
+//   // khoi tao gia tri cac phan tu cua mang n la 0          
+//   for ( int i = 0; i < 10; i++ )
+//   {
+//      n[ i ] = i + 100; // thiet lap phan tu tai vi tri i la i + 100
+//   }
+//   cout << "Phan tu thu:" << setw( 13 ) << "Gia tri la:" << endl;
+// 
+//   // hien thi gia tri cua moi phan tu                     
+//   for ( int j = 0; j < 10; j++ )
+//   {
+//      cout << setw( 7 )<< j << setw( 13 ) << n[ j ] << endl;
+//   }
+// 
+//   return 0;
+//}
+
+//-------------------------Modifier trong C/C++---------------------------------------------------------------
+
+//#include <iostream>
+//using namespace std;
+// 
+///* Chuong trinh nay chi ra diem khac nhau giua
+// * cac so nguyen signed va unsigned.
+//*/
+//int main()
+//{
+//   short int i;           // mot so nguyen signed short int
+//   short unsigned int j;  // mot so nguyen unsigned short int
+//
+//   j = 32769;
+//
+//   i = j;
+//   cout << i << " " << j;
+//
+//   return 0;
+//}
+
+//----------Toan tu trong C++-------------------------------------------------------------------------------
+//1.Toan tu so hoc: +, -, *, /, %:lay so du, ++, --
+//2.Toan tu quan he: ==; !=; >; <; >=; <=.
+//3.Toan tu logic: &&; ||; !
+//4.Toan tu so sanh bit: &; |; ^ = XOR; ~:dao bit; <<; >>:dich phai.
+//5.Toan tu gan: =; C+=A = C = C+A; *=; /=; %=...
+//6.Toan tu hon hop: sizeof(a)-tra ve kich thuoc bien; 
+
+//Vong lap trong C++----------------------------------------------------------------------------------------
+//1. while
+//2. for
+//3.do...while: kiem tra condition cuoi than vong lap
+//4. Long vong lap
+//Lenh dk vong lap
+//1. break: ket thuc vong lap, chuyen sang vong lap tiep theo.
+//2. continue: bo qua cau lenh o ben duoi no de thuc hien vong lap moi.
+//3. goto: chuyen toi lenh dc gan.
+//4. for(; ; ): vong lap vo han. Ctrl + C to cancel
+
+//#include <iostream>
+//using namespace std;
+// 
+//int main ()
+//{
+//
+//   for( ; ; )
+//   {
+//      printf("Vong lap nay se chay mai mai.\n");
+//   }
+//
+//   return 0;
+//}
+
+//Dieu khien luong trong C++
+//1. if
+//2. if...else
+//3. switch: ktra dieu khien cua 1 bien truoc khi thuc thi lenh
+
+//Con tro trong C++-----------------------------------------------------------------------------------
+//La 1 bien trong do gia tri cua no la 1 bien khac, vd nhu dia chi vung nho memory
+//khai bao: kieu_du_lieu *ten_bien;
+//int    *sv;    // tro toi mot gia tri nguyen
+//double *nv;    // tro toi mot gia tri double
+//float  *luong;    // tro toi mot gia tri float
+//char   *ten     // tro toi mot ky tu
+//#include <iostream>
+//
+//using namespace std;
+//
+//int main ()
+//{
+//   int  bien1;
+//   char bien2[10];
+//
+//   cout << "Dia chi cua bien1 la: ";
+//   cout << &bien1 << endl;
+//
+//   cout << "Dia chi cua bien2 la: ";
+//   cout << &bien2 << endl;
+//
+//   return 0;
+//}
+//--------
+//#include <iostream>
+//
+//using namespace std;
+//
+//int main ()
+//{
+//   int  bien1 = 15000;   // khai bao bien.
+//   int  *sv;        // bien con tro sv
+//
+//   sv = &bien1;       // luu tru dia chi cua bien1 vao bien con tro sv
+//
+//   cout << "Gia tri cua bien1 la: ";
+//   cout << bien1 << endl;
+//
+//   // In dia chi duoc luu tru trong bien con tro sv
+//   cout << "Dia chi duoc luu tru trong bien con tro sv la: ";
+//   cout << sv << endl;
+//
+//   // Truy cap gia tri co san tai dia chi cua bien con tro
+//   cout << "Gia tri cua *sv la: ";
+//   cout << *sv << endl;
+//
+//   return 0;
+//}
+
+//Date and Time trong C++------------------------------------------------------------------------
+// cloct_t; time_t; size_t; tm.
+//#include <iostream>
+//#include <ctime>
+//
+//using namespace std;
+//
+//int main( )
+//{
+//   // tra ve date/time hien tai dua tren system hien tai
+//   time_t hientai = time(0);
+//   
+//   // chuyen doi hientai thanh dang chuoi
+//   char* dt = ctime(&hientai);
+//
+//   cout << "Date va Time dang local la: " << dt << endl;
+//
+//   // chuyen doi hientai thanh dang tm struct cho UTC
+//   tm *gmtm = gmtime(&hientai);
+//   dt = asctime(gmtm);
+//   cout << "UTC date va time la: "<< dt << endl;
+//}
+
+//-------------------------------
+//#include <iostream>
+//#include <ctime>
+//
+//using namespace std;
+//
+//int main( )
+//{
+//   // tra ve date/time hien tai dua tren system hien tai
+//   time_t baygio = time(0);
+//
+//   cout << "So giay ke tu 1/1/1970 la: " << baygio << endl;
+//
+//   tm *ltm = localtime(&baygio);
+//
+//   // in cac thanh phan cua cau truc tm struct.
+//   cout << "Nam: "<< 1900 + ltm->tm_year << endl;
+//   cout << "Thang: "<< 1 + ltm->tm_mon<< endl;
+//   cout << "Ngay: "<<  ltm->tm_mday << endl;
+//   cout << "Thoi gian: "<< ltm->tm_hour << ":";
+//   cout << 1 + ltm->tm_min << ":";
+//   cout << 1 + ltm->tm_sec << endl;
+//}
+
+//Function in C++------------------------------------------------------------------------------------------
+//Kieu_tra_ve Ten_ham( Danh sach tham so )
+//{
+//   Than ham
+//}
+
+//#include <iostream>
+//using namespace std;
+// 
+//// khai bao ham
+//int max(int so1, int so2);
+// 
+//int main ()
+//{
+//   // Khai bao bien cuc bo:
+//   int a = 100;
+//   int b = 200;
+//   int ketqua;
+// 
+//   // goi ham de tim gia tri lon nhat.
+//   ketqua = max(a, b);
+// 
+//   cout << "Gia tri lon nhat la: " << ketqua << endl;
+// 
+//   return 0;
+//}
+// 
+//// ham tra ve so lon nhat cua hai so  ~ M-function matlab
+//int max(int so1, int so2) 
+//{
+//   // Khai bao bien cuc bo
+//   int result;
+// 
+//   if (so1 > so2)
+//      result = so1;
+//   else
+//      result = so2;
+// 
+//   return result; 
+//}
+
+//Gia tri mac dinh cho cac tham so trong C++------------------------
+//#include <iostream>
+//using namespace std;
+// 
+//int sum(int a, int b=20)
+//{
+//  int ketqua;
+//
+//  ketqua = a + b;
+//  
+//  return (ketqua);
+//}
+//
+//int main ()
+//{
+//   // Khai bao bien cuc bo:
+//   int a = 100;
+//   int b = 200;
+//   int ketqua;
+// 
+//   // goi ham de tinh tong hai so.
+//   ketqua = sum(a, b);
+//   cout << "Tong gia tri la: " << ketqua << endl;
+//
+//   // goi ham mot lan nua.
+//   ketqua = sum(a);
+//   cout << "Tong gia tri la: " << ketqua << endl;
+// 
+//   return 0;
+//}
+
+//Number trong C++----------------------------------------------------------------------------------------
+//#include <iostream>
+//using namespace std;
+// 
+//int main ()
+//{
+//   // phan dinh nghia cac so:
+//   short  s;
+//   int    i;
+//   long   l;
+//   float  f;
+//   double d;
+//   
+//   // phep gan cho cac so;
+//   s = 10;      
+//   i = 1000;    
+//   l = 1000000; 
+//   f = 230.47;  
+//   d = 30949.374;
+//   
+//   // in cac so;
+//   cout << "short  s la: " << s << endl;
+//   cout << "int    i la: " << i << endl;
+//   cout << "long   l la: " << l << endl;
+//   cout << "float  f la: " << f << endl;
+//   cout << "double d la: " << d << endl;
+// 
+//   return 0;
+//}
+
+
+//Cac ham toan hoc trong C++-------------------------------------------------------------------------------
+//include <cmath>
+//1. double cos(double); cosin
+//2. double sin(double); sin
+//3. double tan(double); tan
+//4. double log(double); log
+//5. double pow(double, double); exponent
+//6. double hypot(double, double); tra ve do dai canh huyen cua tam giac
+//7. double sqrt(double);
+//8. int abs(int);
+//9. double fabs(double);
+//10. double floor(double);
+//#include <iostream>
+//#include <cmath>
+//using namespace std;
+// 
+//int main ()
+//{
+//   // phan dinh nghia cac so:
+//   short  s = 10;
+//   int    i = -1000;
+//   long   l = 100000;
+//   float  f = 230.47;
+//   double d = 200.374;
+//
+//   // cac hoat dong toan hoc;
+//   cout << "sin(d)     co gia tri la: " << sin(d) << endl;
+//   cout << "abs(i)     co gia tri la: " << abs(i) << endl;
+//   cout << "floor(d)   co gia tri la: " << floor(d) << endl;
+//   cout << "sqrt(f)    co gia tri la: " << sqrt(f) << endl;
+//   cout << "pow( d, 2) co gia tri la: " << pow(d, 2) << endl;
+// 
+//   return 0;
+//}
+
+//Random Number in C++------------------------------------------------------------------
+//#include <iostream>
+//#include <ctime>
+//#include <cstdlib>
+//
+//using namespace std;
+// 
+//int main ()
+//{
+//   int i,j;
+// 
+// 
+//   srand( (unsigned)time( NULL ) );
+//
+//   /* tao 10 so ngau nhien. */
+//   for( i = 0; i < 10; i++ )
+//   {
+//      
+//      j= rand();
+//      cout <<" So ngau nhien la : " << j << endl;
+//   }
+//
+//   return 0;
+//}
+
+
+//Tham chieu trong C++--------------------------------------------------------------------------
+//#include <iostream>
+// 
+//using namespace std;
+// 
+//int main ()
+//{
+//   // khai bao cac bien
+//   int    i;
+//   double d;
+// 
+//   // khai bao cac bien tham chieu
+//   int&    r = i;
+//   double& s = d;
+//   
+//   i = 5;
+//   cout << "Gia tri cua i la: " << i << endl;
+//   cout << "Gia tri cua tham chieu toi i la: " << r  << endl;
+// 
+//   d = 11.7;
+//   cout << "Gia tri cua d : " << d << endl;
+//   cout << "Gia tri cua tham chieu toi d la: " << s  << endl;
+//   
+//   return 0;
+//}
+
+
+//Standard Output Stream (cout) trong C++------------------------------------------------------------------------
+//#include <iostream>
+// 
+//using namespace std;
+// 
+//int main( )
+//{
+//   char str[] = "Xin chao C++";
+// 
+//   cout << "Gia tri cua str la: " << str << endl;
+//}
+
+
+//Standard Input Stream (cin) trong C++---------------------------------------------------------------
+//#include <iostream>
+// 
+//using namespace std;
+// 
+//int main( )
+//{
+//   char ten[50];
+// 
+//   cout << "Nhap ten cua ban (viet lien): ";
+//   cin >> ten;
+//   cout << "Ten ban la: " << ten << endl;
+// 
+//}
+
+//Standard Error Stream (cerr) trong C++----------------------------------------------------------------
+//#include <iostream>
+// 
+//using namespace std;
+// 
+//int main( )
+//{
+//   char str[] = "Khong the doc ....";
+// 
+//   cerr << "Thong bao loi la: " << str << endl;
+//}
+
+//Standard Log Stream (clog) trong C++----------------------------------------------------------------
+//#include <iostream>
+// 
+//using namespace std;
+// 
+//int main( )
+//{
+//   char str[] = "Khong the doc ....";
+// 
+//   clog << "Thong bao loi la: " << str << endl;
+//}
+
+//Struct trong C/C++----------------------------------------------------------------------------------
+//Dung de bieu dien 1 ban ghi.
+
+//#include <iostream>
+//#include <cstring>
+// 
+//using namespace std;
+// 
+//struct Books
+//{
+//   char  tieude[50];
+//   char  tacgia[50];
+//   char  chude[100];
+//   int   book_id;
+//};
+// 
+//int main( )
+//{
+//   struct Books QuyenSach1;        // Declare QuyenSach1 of type Book
+//   struct Books QuyenSach2;        // Declare QuyenSach2 of type Book
+// 
+//   // chi tiet ve quyen sach thu nhat
+//   strcpy( QuyenSach1.tieude, "Ngon ngu Lap trinh C++");
+//   strcpy( QuyenSach1.tacgia, "Pham Van At"); 
+//   strcpy( QuyenSach1.chude, "Lap trinh");
+//   QuyenSach1.book_id = 1225;
+//
+//   // chi tiet ve quyen sach thu hai
+//   strcpy( QuyenSach2.tieude, "Toi thay hoa vang tren co xanh");
+//   strcpy( QuyenSach2.tacgia, "Nguyen Nhat Anh");
+//   strcpy( QuyenSach2.chude, "Van hoc");
+//   QuyenSach2.book_id = 3214;
+// 
+//   // in thong tin ve QuyenSach1
+//   cout << "Tieu de cua Quyen sach thu nhat la: " << QuyenSach1.tieude <<endl;
+//   cout << "Tac gia cua Quyen sach thu nhat la: " << QuyenSach1.tacgia <<endl;
+//   cout << "Chu de cua Quyen sach thu nhat la: " << QuyenSach1.chude <<endl;
+//   cout << "ID cua Quyen sach thu nhat la: " << QuyenSach1.book_id <<endl;
+//
+//   cout << "\n\n===================================================================\n\n" <<endl;
+//
+//   // in thong tin ve QuyenSach2
+//   cout << "Tieu de cua Quyen sach thu hai la: " << QuyenSach2.tieude <<endl;
+//   cout << "Tac gia cua Quyen sach thu hai la: " << QuyenSach2.tacgia <<endl;
+//   cout << "Chu de cua Quyen sach thu hai la: " << QuyenSach2.chude <<endl;
+//   cout << "ID cua Quyen sach thu hai la: " << QuyenSach2.book_id <<endl;
+//
+//   return 0;
+//}
+
+//Struct duoi dang tham so ham trong C++-----------------------------------------------
+//#include <iostream>
+//#include <cstring>
+// 
+//using namespace std;
+//void inthongtin( struct Books book );
+//
+//struct Books
+//{
+//   char  tieude[50];
+//   char  tacgia[50];
+//   char  chude[100];
+//   int   book_id;
+//};
+// 
+//int main( )
+//{
+//   struct Books QuyenSach1;        // Khai bao QuyenSach1 la cua kieu Books
+//   struct Books QuyenSach2;        // Khai bao QuyenSach2 la cua kieu Books
+// 
+//   // chi tiet ve quyen sach thu nhat
+//   strcpy( QuyenSach1.tieude, "Ngon ngu Lap trinh C++");
+//   strcpy( QuyenSach1.tacgia, "Pham Van At"); 
+//   strcpy( QuyenSach1.chude, "Lap trinh");
+//   QuyenSach1.book_id = 1225;
+//
+//   // chi tiet ve quyen sach thu hai
+//   strcpy( QuyenSach2.tieude, "Toi thay hoa vang tren co xanh");
+//   strcpy( QuyenSach2.tacgia, "Nguyen Nhat Anh");
+//   strcpy( QuyenSach2.chude, "Van hoc");
+//   QuyenSach2.book_id = 3214;
+// 
+//   // in thong tin ve QuyenSach1
+//   inthongtin( QuyenSach1 );
+//
+//   // in thong tin ve QuyenSach2
+//   inthongtin( QuyenSach2 );
+//
+//   return 0;
+//}
+//void inthongtin( struct Books book )
+//{
+//   cout << "Tieu de sach: " << book.tieude <<endl;
+//   cout << "Tac gia: " << book.tacgia <<endl;
+//   cout << "Chu de: " << book.chude <<endl;
+//   cout << "ID cua sach la: " << book.book_id <<endl;
+//   cout << "\n\n========================================\n\n" <<endl;
+//}
+
+//Con tro toi struct trong C++------------------------------------------------------------
+//#include <iostream>
+//#include <cstring>
+// 
+//using namespace std;
+//void inthongtin( struct Books *book );
+//
+//struct Books
+//{
+//   char  tieude[50];
+//   char  tacgia[50];
+//   char  chude[100];
+//   int   book_id;
+//};
+// 
+//int main( )
+//{
+//   struct Books QuyenSach1;        // Khai bao QuyenSach1 la cua kieu Books
+//   struct Books QuyenSach2;        // Khai bao QuyenSach2 la cua kieu Book
+// 
+//   // thong tin chi thiet ve quyen sach thu nhat
+//   strcpy( QuyenSach1.tieude, "Ngon ngu Lap trinh C++");
+//   strcpy( QuyenSach1.tacgia, "Pham Van At"); 
+//   strcpy( QuyenSach1.chude, "Lap trinh");
+//   QuyenSach1.book_id = 1225;
+//
+//   // thong tin chi thiet ve quyen sach thu hai
+//   strcpy( QuyenSach2.tieude, "Toi thay hoa vang tren co xanh");
+//   strcpy( QuyenSach2.tacgia, "Nguyen Nhat Anh");
+//   strcpy( QuyenSach2.chude, "Van hoc");
+//   QuyenSach2.book_id = 3214;
+// 
+//   // in thong tin cua QuyenSach1, bang cach truyen dia chi cua cau truc
+//   inthongtin( &QuyenSach1 );
+//
+//   // in thong tin cua QuyenSach2, bang cach truyen dia chi cua cau truc
+//   inthongtin( &QuyenSach2 );
+//
+//   return 0;
+//}
+//// Ham nay chap nhan con tro toi cau truc lam tham so.
+//void inthongtin( struct Books *book )
+//{
+//   cout << "Tieu de sach: " << book->tieude <<endl;
+//   cout << "Tac gia: " << book->tacgia <<endl;
+//   cout << "Chu de: " << book->chude <<endl;
+//   cout << "ID cua sach: " << book->book_id <<endl;
+//   cout << "\n\n========================================\n\n" <<endl;
+//}
+
+//
+//================Create Matrix, get pixel value in OpenCV C++=========================================================================
+//https://riptutorial.com/opencv/example/6394/access-individual-pixel-values-with-cv--mat--at-t---
+//http://opencvexamples.blogspot.com/2013/09/creating-matrix-in-different-ways.html
+//https://www.youtube.com/watch?v=HmDkXMe5_RA               install OpenCV on Raspberry PI
+// For CV_8UC1: uchar pixelGrayValue = image.at<uchar>(r,c)
+// For CV_8UC3: cv::Vec3b pixelColor = image.at<cv::Vec3b>(r,c)
+// For CV_32FC1: float pixelGrayValue = image.at<float>(r,c)
+// CV_32FC3: cv::Vec3f pixelColor = image.at<cv::Vec3f>(r,c)
+
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//#include <iomanip>
+//#include <iostream>
+//#include <utility>
+//#include <type_traits>
+//#include <typeinfo>
+//#include <vector>
+//#include <numeric>
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+//int main()
+//{
+//	//Mat test = Mat::zeros(Size(256, 256), CV_64FC1);
+//	
+//	Mat img = imread("E:\\AntonRTI\\Matlab\\Examples\\Images library for Image Processing\\lena.png", 0);
+//	imshow("Gray-scale Image", img);
+//	
+//	clock_t start, end;
+//
+//	start = clock();
+//	int height = img.rows;
+//	int width = img.cols;
+//
+//	Mat EM(Size(height, width), CV_32FC1); //Get dimensions from image.
+//	EM = 0;
+//	//change some pixel value
+//	for(int j=0; j<EM.rows; j++) 
+//	{
+//		for (int i=0; i<EM.cols; i++)
+//		{
+//			if( i==j)   
+//				EM.at<float>(j,i) = 512; //white
+//		}
+//	}
+//	
+//	//Convert uchar Mat to float Mat in OpenCV?
+//	//CV_32FC1 is for 1-channel (C1, i.e. grey image) float valued (32F) pixels
+//	//CV_8UC1 is for 1-channel (C1, i.e. grey image) unsigned char (8UC) valued ones.
+//	Mat img2;
+//	img.convertTo(img2, CV_32FC1);
+//
+//	for (int j=0; j<img2.rows; j++)
+//	{
+//		for(int i=0; i<img2.cols; i++)
+//		{
+//			if (j==i)
+//				img2.at<float>(j,i)=255;
+//		}
+//	}
+//
+//	//Create grayscale matrix
+//	Mat img3;
+//	img3.create(5,5,CV_8UC1); //uchar 8-bit channel
+//	img3=0;
+//	cout << "img3 = " << endl << " " << img3 << endl << endl;
+//
+//	//Create float matrix
+//	Mat img4;
+//	img4.create(9,9,CV_32FC1); //uchar 8-bit channel
+//	img4=65530;
+//	cout << "img4 = " << endl << " " << img4 << endl << endl;
+//
+//	end = clock();
+//	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//	printf("Execution time: %.3fs\n", duration_sec);
+//
+//	//https://www.codesdope.com/cpp-stdvector/
+//	//https://math-linux.com/c/faq-c/faq-c-stl/article/how-to-sum-elements-of-a-c-std-vector
+//	vector<int> u(3,0); //Create vector 3 elements with values 0
+//	u[0]=78;
+//	int n=u[1];  //access to the second element
+//	u[2]=-53;
+//	int sum = accumulate(u.begin(),u.end(),0);
+//	cout << "Sum:=" << u[2] << endl;
+//
+//	//printf("Sum:= %d\n", sum); //similar with cout<<
+//	//After changing
+//	imshow("After",EM);
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//---------Load, Modify, and Save an Image-----------------------------------------------------------------
+
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//using namespace cv;
+//using namespace std;
+//
+//int main( int argc, char** argv )
+//{
+//	argv[1] = "E:\\AntonRTI\\Matlab\\Examples\\Images library for Image Processing\\lena.png";
+//
+//   /* if( argc != 2)
+//    {
+//     cout <<" Usage: display_image ImageToLoadAndDisplay" << endl;
+//     return -1;
+//    }*/
+//
+//	char* imageName = argv[1];
+//	Mat image;
+//	image = imread( argv[1], 1 );
+//
+//	if( !image.data )
+//	{
+//		printf( " No image data \n " );
+//		return -1;
+//	}
+//
+//	Mat gray_image;
+//
+//	clock_t start, end;
+//	start=clock();
+//	cvtColor( image, gray_image, CV_BGR2GRAY );
+//	imwrite( "E:/AntonRTI/OpenCVcode/Gray_Image.jpg", gray_image );
+//	end=clock();
+//	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//	printf("Execution time: %.3fs\n", duration_sec);
+//
+//	namedWindow( imageName, CV_WINDOW_AUTOSIZE ); // Create a window for display.
+//	namedWindow( "Gray image", CV_WINDOW_AUTOSIZE );  // Create a window for display.
+//
+//	imshow( imageName, image ); // Show our image inside it.
+//	imshow( "Gray image", gray_image ); // Show our image inside it.
+//
+//    waitKey(0); // Wait for a keystroke in the window
+//    return 0;
+//}
+
+//----Mat - The Basic Image Container--------------------------------------------------------------------
+//#include <opencv2/core/core.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//
+//using namespace cv;
+//using namespace std;
+//
+//int main(int argc, char** argv)
+//{
+//	argv[1] = "E:\\AntonRTI\\Matlab\\Examples\\Images library for Image Processing\\lena.png";
+//	Mat A, C;                          // creates just the header parts
+//	A = imread(argv[1], IMREAD_COLOR); // here we'll know the method used (allocate matrix)
+//	Mat B(A);                                 // Use the copy constructor
+//	C = A; 
+//
+//	Mat D (A, Rect(10, 10, 100, 100) ); // using a rectangle
+//	Mat E = A(Range::all(), Range(1,3)); // using row and column boundaries: all rows + 3 cols
+//
+//	Mat F = A.clone();
+//	Mat G;
+//	A.copyTo(G);
+//
+//	//Creating a Mat object explicitly
+//	Mat M(2,2, CV_8UC3, Scalar(0,0,255));
+//    cout << "M = " << endl << " " << M << endl << endl;
+//	//Use C/C++ arrays and initialize via constructor
+//	int sz[3] = {2,2,2};
+//    Mat L(3,sz, CV_8UC(1), Scalar::all(0));
+//
+//	//
+//	M.create(4,4, CV_8UC(2));
+//    cout << "M = "<< endl << " "  << M << endl << endl;
+//
+//	//MATLAB style initializer: cv::Mat::zeros , cv::Mat::ones , cv::Mat::eye . Specify size and data type to use:
+//	//Mat E = Mat::eye(4, 4, CV_32F);
+//    //cout << "E = " << endl << " " << E << endl << endl;
+//    Mat O = Mat::ones(3, 3, CV_32F);
+//    cout << "O = " << endl << " " << O << endl << endl;
+//    Mat Z = Mat::zeros(3,3, CV_8UC1);
+//    cout << "Z = " << endl << " " << Z << endl << endl;
+//
+//	//For small matrices you may use comma separated initializers:
+//	Mat H = (Mat_<double>(3,3) << 0, -1, 0, -1, 5, -1, 0, -1, 0);
+//    cout << "H = " << endl << " " << H << endl << endl;
+//	Mat RowClone = H.row(1).clone();
+//    cout << "RowClone = " << endl << " " << RowClone << endl << endl;
+//
+//	//You can fill out a matrix with random values using the cv::randu() function. You need to give the lower and upper value for the random values: is not run!
+//	Mat R = Mat(3, 3, CV_8UC3);
+//    randu(R, Scalar::all(0), Scalar::all(255));
+//
+//	//
+//	clock_t start, end;
+//	start=clock();
+//	namedWindow( "Image", CV_WINDOW_AUTOSIZE );  // Create a window for display.
+//	imshow( "Image", G); // Show our image inside it.
+//	end=clock();
+//	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//
+//    waitKey(0); // Wait for a keystroke in the window
+//    return 0;
+//}
+
+
+//Input/Output matrix without using function--------------------------------------------------------------
+//https://nguyenvanhieu.vn/nhap-xuat-mang-2-chieu/
+
+//#include<stdio.h>
+//#include<conio.h>
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+//main()
+//{ 
+//    int a[50][50];
+//    int i,j,m,n;
+//    printf("nhap so hang n="); scanf("%d",&n);
+//    printf("nhap so cot m="); scanf("%d",&m);
+//    printf("nhap vao ma tran:\n");
+//    for(i=0;i<n;i++)
+//    {
+//        for(j=0;j<m;j++)
+//        {
+//            scanf("%d",&a[i][j]);
+//        }
+//    }
+//    printf("ma tran vua nhap la:\n");
+//    for(i=0;i<n;i++)
+//    {
+//        for(j=0;j<m;j++)
+//        {
+//            printf("%d ",a[i][j]);
+//        }
+//        printf("\n");
+//    }
+//}
+
+//Input/Output matrix using function-----------------------------------------------------------------
+//#include <stdio.h>
+//void NhapMaTran(int a[][100], int m, int n)
+//{
+//   for(int i = 0; i < m; i++)
+//      for(int j = 0; j < n; j++)
+//      {
+//         printf("A[%d][%d] = ", i, j);
+//         scanf("%d", &a[i][j]);
+//      }
+//}
+// 
+//void XuatMaTran(int a[][100], int m, int n)
+//{
+//   for(int i = 0; i < m; i++)
+//   {
+//      for(int j = 0; j < n; j++)
+//         printf("%d\t", a[i][j]);
+//      printf("\n");
+//   }
+//}
+// 
+//int main(){
+//    int a[100][100];
+//    int m,n;
+//    printf("nhap so hang n = "); scanf("%d",&n);
+//    printf("nhap so cot m = "); scanf("%d",&m);
+//    printf("nhap vao ma tran:\n");
+//    NhapMaTran(a, m , n);
+//    XuatMaTran(a, m, n);
+//}
+
+//---------------------------Finding of local single extreme------------------------------------------------------
+
+//#include <iomanip>
+//#include <iostream>
+//#include <utility>
+//#include <type_traits>
+//#include <typeinfo>
+//#include <vector>
+//#include <numeric>
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+//int main()
+//{
+//	Mat img = imread("E:\\AntonRTI\\Matlab\\Examples\\Images library for Image Processing\\lena.png", 0);
+//	imshow("Gray-scale Image", img);
+//	clock_t start, end;
+//	int Y = img.rows, X = img.cols;
+//	int N=0, SN=0;
+//	Mat BH = Mat::ones(Y, X, CV_8UC1);
+//	Mat BL = Mat::ones(Y, X, CV_8UC1);
+//	Mat EM(Size(Y, X), CV_32FC1); //Get Label matrix.
+//	EM = 0;
+//	start = clock();
+//	for (int y=2; y<Y; y++)
+//	{
+//		for (int x=2; x<X; x++)
+//		{
+//			//Scanning Mask: [6 7 8; 2 0 1; 5 4 3]
+//			int S0, S1, S2, S3, S4, S5, S6, S7, S8;
+//			S6=img.at<uchar>(y-1,x-1); S7=img.at<uchar>(y-1,x); S8=img.at<uchar>(y-1,x+1);
+//			S2=img.at<uchar>(y,x-1);   S0=img.at<uchar>(y,x);   S1=img.at<uchar>(y,x+1);
+//			S5=img.at<uchar>(y+1,x-1); S4=img.at<uchar>(y+1,x); S3=img.at<uchar>(y+1,x+1);
+//			//Find local maxima using non-maximum seppresion
+//			//https://developerinsider.co/nested-if-statements-in-cpp/
+//			BH.at<uchar>(y,x)=1;
+//			if (S1>=S0){
+//
+//			}
+//			else{
+//
+//			}
+//		//
+//		}
+//	}
+//	end = clock();
+//	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+//	printf("Execution time: %.3fs\n", duration_sec);
+//
+//	//https://www.codesdope.com/cpp-stdvector/
+//	//https://math-linux.com/c/faq-c/faq-c-stl/article/how-to-sum-elements-of-a-c-std-vector
+//	vector<int> u(3,0); //Create vector 3 elements with values 0
+//	u[0]=78;
+//	int n=u[1];  //access to the second element
+//	u[2]=-53;
+//	int sum = accumulate(u.begin(),u.end(),0);
+//	cout << "Sum:=" << u[2] << endl;
+//
+//	//printf("Sum:= %d\n", sum); //similar with cout<<
+//	//After changing
+//	imshow("After",BH);
+//	waitKey(0);
+//    return 0;
+//}
+
+
+//-----------------Work with matrix and vector in c++----------------------------------------
+//#include <opencv2/core/core.hpp>
+//#include <cv.h>
+//#include <stdlib.h>
+//#include <opencv2/imgproc/imgproc.hpp>
+//#include <opencv2/highgui/highgui.hpp>
+//#include <iostream>
+//#include <stdio.h>
+//#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+//#include <iomanip>
+//#include <iostream>
+//#include <utility>
+//#include <type_traits>
+//#include <typeinfo>
+//#include <vector>
+//#include <numeric>
+//
+//using namespace cv; // for using opencv2.x
+//using namespace std; // for texting with cout<<
+//
+////Create function
+//void display(int m[3][3])
+//{
+//       cout <<"          Medal1" << " " << "Medal2" << " " << "Medal3" << endl;
+//    for (int i=0 ;i<3;i++){
+//        cout << "Country"<<i+1<<"     ";
+//        for (int j=0 ;j<3;j++){
+//		cout<< m[i][j] << "    " ;
+//		if(j==2)
+//        cout<<endl;
+//        }}
+//
+//}
+////
+//int main()
+//{
+//	int matrix[10][10]; //values are int by default.
+//
+//	// Initializing elements of matrix to 0.
+//    for(int x=0;x<10;x++)
+//    {
+//        for(int y=0;y<10;y++)
+//        {
+//            matrix[x][y]=0;
+//        }
+//    }
+//
+//    // showing the matrix on the screen
+//    for(int x=0;x<10;x++)  // loop 10 times for ten lines
+//    {
+//        for(int y=0;y<10;y++)  // loop for the ten elements on the line
+//        {
+//            cout<<matrix[x][y];  // display the current element out of the array
+//        }
+//    cout<<endl;  // when the inner loop is done, go to a new line
+//    }
+//
+//	// Array 1D
+//	int numbers[5], sum = 0;
+//    cout << "Enter 5 numbers: ";
+//    
+//    //  Storing 5 number entered by user in an array
+//    //  Finding the sum of numbers entered
+//    for (int i = 0; i < 5; ++i) 
+//    {
+//        cin >> numbers[i];
+//        sum += numbers[i];
+//    }
+//    
+//    cout << "Sum = " << sum << endl;
+//
+//	//
+//	int m[3][3] = { {2,1,8},{5,3,9},{2,0,9} };
+//    display(m); //similar to M-function in Matlab
+
+	/*double x = 10.25, result;
+    result = floor(x);
+    cout << "Floor of " << x << " = " << result << endl;
+
+    x = -34.251;
+    result = floor(x);
+    cout << "Floor of " << x << " = " << result << endl;
+    
+    x = 0.71;
+    result = floor(x);
+    cout << "Floor of " << x << " = " << result << endl;*/
+
+//
+//	//
+//	waitKey(0); // wait to press any key to close.
+//    return 0; // return 0 to the OS.
+//}
+
+//-----------------------------------------Search of extrema-----------------------------------------------
+#include <opencv2/core/core.hpp>
+#include <cv.h>
+#include <stdlib.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <iostream>
+#include <stdio.h>
+#include <time.h> // includes clock_t and CLOCKS_PER_SEC
+//
+#include <iomanip>
+#include <iostream>
+#include <utility>
+#include <type_traits>
+#include <typeinfo>
+#include <vector>
+#include <numeric>
+//
+using namespace cv; // for using opencv2.x
+using namespace std; // for texting with cout<<
+//
+int main()
+{
+	int Y=8, X=9, N=0, SN=0, EN=0;
+	double Len = floor(0.2*Y*X);
+	cout<<"Length of vector: "<<Len<<endl;
+
+	vector<int> Index(Len,0), ES(Len,0), EC(Len,0), SY(Len,0), SX(Len,0);
+	//ES[2]=89;
+	//cout << "Position: " << ES[2] << endl;
+
+	int img[8][9] = { {1, 1, 1, 5, 1, 1, 1, 1, 1},
+					  {1, 5, 5, 2, 2, 5, 2, 1, 1},
+					  {5, 3, 5, 1, 5, 5, 5, 6, 6}, 
+					  {3, 3, 3, 1, 5, 5, 5, 2, 1},
+					  {3, 3, 3, 3, 3, 1, 2, 2, 3},
+					  {4, 3, 3, 1, 4, 2, 3, 2, 3},
+					  {4, 3, 3, 3, 4, 2, 3, 2, 3},
+					  {4, 4, 4, 4, 4, 2, 3, 3, 3} };
+	int EM[8][9], ER[8][9]; //values are int by default.
+	// Initializing elements of label matrix to 0.
+    for(int x=0;x<8;x++)
+    {
+        for(int y=0;y<9;y++)
+        {
+            EM[x][y]=0;
+        }
+    }
+	//
+	for(int x=0;x<8;x++)
+    {
+        for(int y=0;y<9;y++)
+        {
+            ER[x][y]=0;
+        }
+    }
+	//
+	int BH[8][9], BL[8][9];
+	for(int x=0;x<8;x++)
+    {
+        for(int y=0;y<9;y++)
+        {
+            BH[x][y]=1;
+        }
+    }
+	for(int x=0;x<8;x++)
+    {
+        for(int y=0;y<9;y++)
+        {
+            BL[x][y]=1;
+        }
+    }
+	// Algorithm
+	clock_t start, end;
+	start = clock();
+	int y=1;
+	while (y<Y-1)
+	{
+		int x=1;
+		while (x<X-1)
+		{
+			int S0, S1, S2, S3, S4, S5, S6, S7, S8;
+			S6=img[y-1][x-1]; S7=img[y-1][x]; S8=img[y-1][x+1];
+			S2=img[y][x-1];   S0=img[y][x];   S1=img[y][x+1];
+			S5=img[y+1][x-1]; S4=img[y+1][x]; S3=img[y+1][x+1];
+			// Maxima
+			if (BH[y][x]==1)
+			{
+				if (S0>=S1)
+				{
+					N=N+1;
+					BH[y][x+1]=0;
+					BL[y][x]=0;
+					if (S0>S2)
+					{
+						N=N+1;
+						BH[y][x-1]=0;
+						BL[y][x]=0;
+						if (S0>=S3)
+						{
+							N=N+1;
+							BH[y+1][x+1]=0;
+							BL[y][x]=0;
+							if (S0>=S4)
+							{
+								N=N+1;
+								BH[y+1][x]=0;
+								BL[y][x]=0;
+								if (S0>=S5)
+								{
+									N=N+1;
+									BH[y+1][x-1]=0;
+									BL[y][x]=0;
+									if (S0>S6)
+									{
+										N=N+1;
+										BH[y-1][x-1]=0;
+										BL[y][x]=0;
+										if (S0>S7)
+										{
+											N=N+1;
+											BH[y-1][x]=0;
+											BL[y][x]=0;
+											if (S0>S8)
+											{
+												N=N+1;
+												BH[y-1][x+1]=0;
+												BL[y][x]=0;
+												//
+												int SP=0;
+												if (S0==S1)
+												{
+													SP=SP+1;
+													SY[SP]=y;
+													SX[SP]=x+1;
+												}
+												if (S0==S3)
+												{
+													SP=SP+1;
+													SY[SP]=y+1;
+													SX[SP]=x+1;
+												}
+												if (S0==S4)
+												{
+													SP=SP+1;
+													SY[SP]=y+1;
+													SX[SP]=x;
+												}
+												if (S0==S5)
+												{
+													SP=SP+1;
+													SY[SP]=y+1;
+													SX[SP]=x-1;
+												}
+												//
+												if (SP==0)
+												{
+													SN=SN+1;
+													EM[y][x]=SN;
+													EN=EN+1;
+													ES[EN]=SN;
+													EC[EN]=1;
+													Index[EN]=1;
+													BL[y][x]=0;
+												}
+												else
+												{
+													SN=SN+1;
+													int coun=1;
+													EM[y][x]=SN; ER[y][x]=SN;
+													SP=SP+1; SY[SP]=y; SX[SP]=x;
+													BL[y][x]=0; BH[y][x]=0;
+													int EF=1;
+													while (SP>0)
+													{
+														int y1=SY[SP], x1=SX[SP];
+														SP=SP-1;
+														BL[y1][x1]=0; BH[y1][x1]=0;
+														//
+														int j=-1;
+														while (j<2)
+														{
+															int i=-1;
+															while (i<2)
+															{
+																if (j==0 && i==0)
+																{
+																}
+																else
+																{
+																	N=N+1;
+																	int ny=y1+j, nx=x1+i;
+																	if ((ny>=0) && (nx>=0)&& (ny<=Y-1) && (nx<=X-1) && (ER[ny][nx]!=SN))
+																	{
+																		ER[ny][nx]=SN;
+																		if (img[ny][nx]==img[y1][x1]&&EM[ny][nx]==0) 
+																		{
+																			EM[ny][nx]=SN;
+																			coun = coun+1;
+																			SP=SP+1;
+																			SY[SP]=ny; SX[SP]=nx;
+																		}
+																		else
+																		{
+																			if (img[ny][nx]>img[y1][x1])
+																			{
+																				EF=0;
+																			}
+																		}
+																	}
+																}
+
+																i=i+1;
+															}
+															j=j+1;
+														}
+														//
+													}
+													//
+													if (EF==1)
+													{
+														EN=EN+1;
+														ES[EN]=SN;
+														EC[EN]=coun;
+														Index[EN]=1;
+													}
+													//
+												}
+											}
+											else
+											{
+												N=N+1;
+												BL[y-1][x+1]=0;
+												BH[y][x]=0;
+											}
+										}
+										else
+										{
+											N=N+1;
+											BL[y-1][x]=0;
+											BH[y][x]=0;
+										}
+									}
+									else
+									{
+										N=N+1;
+										BL[y-1][x-1]=0;
+										BH[y][x]=0;
+									}
+								}
+								else
+								{
+									N=N+1;
+									BL[y+1][x-1]=0;
+									BH[y][x]=0;
+								}
+							}
+							else
+							{
+								N=N+1;
+								BL[y+1][x]=0;
+								BH[y][x]=0;
+							}
+						}
+						else
+						{
+							N=N+1;
+							BL[y+1][x+1]=0;
+							BH[y][x]=0;
+						}
+					}
+					else
+					{
+						N=N+1;
+						BL[y][x-1]=0;
+						BH[y][x]=0;
+					}
+				}
+				else
+				{
+					N=N+1;
+					BL[y][x+1]=0;
+					BH[y][x]=0;
+				}
+			}
+			// Minima
+			if (BL[y][x]==1)
+			{
+				if (S0<=S1)
+				{
+					N=N+1;
+					BL[y][x+1]=0;
+					BH[y][x]=0;
+					if (S0<S2)
+					{
+						N=N+1;
+						BL[y][x-1]=0;
+						BH[y][x]=0;
+						if (S0<=S3)
+						{
+							N=N+1;
+							BL[y+1][x+1]=0;
+							BH[y][x]=0;
+							if (S0<=S4)
+							{
+								N=N+1;
+								BL[y+1][x]=0;
+								BH[y][x]=0;
+								if (S0<=S5)
+								{
+									N=N+1;
+									BL[y+1][x-1]=0;
+									BH[y][x]=0;
+									if (S0<S6)
+									{
+										N=N+1;
+										BL[y-1][x-1]=0;
+										BH[y][x]=0;
+										if (S0<S7)
+										{
+											N=N+1;
+											BL[y-1][x]=0;
+											BH[y][x]=0;
+											if (S0<S8)
+											{
+												N=N+1;
+												BL[y-1][x+1]=0;
+												BH[y][x]=0;
+												//
+												int SP=0;
+												if (S0==S1)
+												{
+													SP=SP+1;
+													SY[SP]=y;
+													SX[SP]=x+1;
+												}
+												if (S0==S3)
+												{
+													SP=SP+1;
+													SY[SP]=y+1;
+													SX[SP]=x+1;
+												}
+												if (S0==S4)
+												{
+													SP=SP+1;
+													SY[SP]=y+1;
+													SX[SP]=x;
+												}
+												if (S0==S5)
+												{
+													SP=SP+1;
+													SY[SP]=y+1;
+													SX[SP]=x-1;
+												}
+												//
+												if (SP==0)
+												{
+													SN=SN+1;
+													EM[y][x]=SN;
+													EN=EN+1;
+													ES[EN]=SN;
+													EC[EN]=1;
+													Index[EN]=2;
+													BH[y][x]=0;
+												}
+												else
+												{
+													SN=SN+1;
+													int coun=1;
+													EM[y][x]=SN; ER[y][x]=SN;
+													SP=SP+1; SY[SP]=y; SX[SP]=x;
+													BL[y][x]=0; BH[y][x]=0;
+													int EF=1;
+													while (SP>0)
+													{
+														int y1=SY[SP], x1=SX[SP];
+														SP=SP-1;
+														BL[y1][x1]=0; BH[y1][x1]=0;
+														//
+														int j=-1;
+														while (j<2)
+														{
+															int i=-1;
+															while (i<2)
+															{
+																if (j==0 && i==0)
+																{
+																}
+																else
+																{
+																	N=N+1;
+																	int ny=y1+j, nx=x1+i;
+																	if ((ny>=0) && (nx>=0)&& (ny<=Y-1) && (nx<=X-1) && (ER[ny][nx]!=SN))
+																	{
+																		ER[ny][nx]=SN;
+																		if (img[ny][nx]==img[y1][x1]&&EM[ny][nx]==0) 
+																		{
+																			EM[ny][nx]=SN;
+																			coun = coun+1;
+																			SP=SP+1;
+																			SY[SP]=ny; SX[SP]=nx;
+																		}
+																		else
+																		{
+																			if (img[ny][nx]<img[y1][x1])
+																			{
+																				EF=0;
+																			}
+																		}
+																	}
+																}
+
+																i=i+1;
+															}
+															j=j+1;
+														}
+														//
+													}
+													// flag
+													if (EF==1)
+													{
+														EN=EN+1;
+														ES[EN]=SN;
+														EC[EN]=coun;
+														Index[EN]=2;
+													}
+													//
+												}
+											}
+											else
+											{
+												N=N+1;
+												BH[y-1][x+1]=0;
+												BL[y][x]=0;
+											}
+										}
+										else
+										{
+											N=N+1;
+											BH[y-1][x]=0;
+											BL[y][x]=0;
+										}
+									}
+									else
+									{
+										N=N+1;
+										BH[y-1][x-1]=0;
+										BL[y][x]=0;
+									}
+								}
+								else
+								{
+									N=N+1;
+									BH[y+1][x-1]=0;
+									BL[y][x]=0;
+								}
+							}
+							else
+							{
+								N=N+1;
+								BH[y+1][x]=0;
+								BL[y][x]=0;
+							}
+						}
+						else
+						{
+							N=N+1;
+							BH[y+1][x+1]=0;
+							BL[y][x]=0;
+						}
+					}
+					else
+					{
+						N=N+1;
+						BH[y][x-1]=0;
+						BL[y][x]=0;
+					}
+				}
+				else
+				{
+					N=N+1;
+					BH[y][x+1]=0;
+					BL[y][x]=0;
+				}
+			}
+			//
+			x=x+1;
+		}
+		y=y+1;
+	}
+	end = clock();
+	double duration_sec = double(end-start)/CLOCKS_PER_SEC;
+	printf("The execution time: %.9fs\n", duration_sec);
+	printf("\n");
+    // showing the matrix on the screen
+	printf("The original image: \n");
+	 for(int x=0;x<8;x++)  // loop 10 times for ten lines
+    {
+        for(int y=0;y<9;y++)  // loop for the ten elements on the line
+        {
+            cout<<"     "<<img[x][y];  // display the current element out of the array
+        }
+    cout<<"\n"<<endl;  // when the inner loop is done, go to a new line
+    }
+	 //
+	printf("The label matrix: \n");
+    for(int x=0;x<8;x++)  // loop 10 times for ten lines
+    {
+        for(int y=0;y<9;y++)  // loop for the ten elements on the line
+        {
+            cout<<"     "<<EM[x][y];  // display the current element out of the array
+        }
+    cout<<"\n"<<endl;  // when the inner loop is done, go to a new line
+    }
+
+	//
+	waitKey(0); // wait to press any key to close.
+    return 0; // return 0 to the OS.
+}
